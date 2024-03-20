@@ -1,0 +1,1 @@
+<div class="{{ .Get "class" | default "chords" }}">{{ .Inner | .Page.RenderString | strings.ReplaceRE "<code>\\[(.+?)\\]</code>" "<span class=\"chord\">$1</span>" | safeHTML }}</div>
