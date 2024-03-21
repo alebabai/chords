@@ -2,6 +2,7 @@ baseURL: https://alebabai.github.io/chords/
 title: Разборы песен от Ивана Говнова
 
 languageCode: ru
+defaultContentLanguage: ru
 
 taxonomies:
   artist: artists
