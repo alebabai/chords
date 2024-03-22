@@ -2,9 +2,9 @@
   <h1>{{ .Title }}</h1>
   {{ .Content }}
   {{ range .Pages }}
-  <article>
-    <h1><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h1>
-    {{ .Content }}
-  </article>
+    <article>
+      <h1><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h1>
+      {{ .Content }}
+    </article>
   {{ end }}
 {{ end }}
