@@ -7,3 +7,5 @@ defaultContentLanguage: ru
 taxonomies:
   artist: artists
   tag: tags
+
+enableRobotsTXT: true
