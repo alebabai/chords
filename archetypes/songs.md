@@ -5,5 +5,6 @@ title: {{ index $fileNameParts 0 | title }}
 artists: 
   - {{ . | title }}
 {{- end }}
+date: {{ .Date }}
 draft: true
 ---
