@@ -8,4 +8,5 @@ taxonomies:
   artist: artists
   tag: tags
 
+enableGitInfo: true
 enableRobotsTXT: true
