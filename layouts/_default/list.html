@@ -1,10 +1,10 @@
-{{ define "main" }}
+{{- define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ range .Pages }}
+  {{- range .Pages }}
     <article>
       <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
       {{ .Summary }}
     </article>
-  {{ end }}
-{{ end }}
+  {{- end }}
+{{- end }}
