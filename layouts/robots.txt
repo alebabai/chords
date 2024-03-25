@@ -1,0 +1,9 @@
+Sitemap: {{ absURL "sitemap.xml" }}
+
+User-agent: *
+
+Disallow: /
+
+Allow: {{ relURL "" }}$
+Allow: {{ relURL "songs" }}
+Allow: {{ relURL "artists" }}
