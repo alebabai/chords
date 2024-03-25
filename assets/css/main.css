@@ -13,7 +13,6 @@ header {
 footer {
   border-top: 1px solid black;
   margin-top: 1rem;
-  padding-top: 1rem;
 }
 
 article>header {
@@ -23,6 +22,10 @@ article>header {
 a {
   color: rgb(0, 100, 100);
   text-decoration: none;
+}
+
+.terms {
+  margin-top: 1rem;
 }
 
 .chords p {
