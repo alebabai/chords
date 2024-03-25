@@ -2,5 +2,6 @@
 <meta name="viewport" content="width=device-width">
 {{- $title := cond (eq .Path "/404") (.GetPage "/_404" | default .).Title .Title }}
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" $title site.Title }}{{ end }}</title>
+<link rel="icon" type="image/x-icon" href="{{ relURL "favicon.ico" }}">
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
