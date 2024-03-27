@@ -20,7 +20,7 @@ article>header {
 }
 
 a {
-  color: #990000;
+  color: #A90000;
   text-decoration: none;
 }
 
@@ -36,5 +36,5 @@ a {
   position: absolute;
   margin-top: -1.5rem;
   font-weight: lighter;
-  color:  #890000;
+  color:  #980000;
 }
