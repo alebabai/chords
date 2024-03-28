@@ -4,7 +4,7 @@
   {{- range .Pages.ByParam "artists" }}
     <article>
       <header>
-        <h1><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h1>
+        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
         {{ with index (.GetTerms "artists") 0 }}
         <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         {{ end }}
