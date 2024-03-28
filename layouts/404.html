@@ -3,7 +3,7 @@
     <h1>{{ .Title }}</h1>
     {{ .Content }}
     {{- with resources.Get "images/apache.jpg"}}
-      <img src="{{ .RelPermalink }}" width="500" alt="Attack helicopter">
+      <img src="{{ .RelPermalink }}" alt="Attack helicopter" style="width:100%; max-width: 500px; height: auto;">
     {{- end }}
   {{- end }}
 {{- end }}
