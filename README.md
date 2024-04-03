@@ -1,6 +1,6 @@
 # Chords
 
-> An old-fashioned static website, powered by Hugo, with intentionally wrong chords for my favorite songs
+> An old-fashioned static website with intentionally wrong chords of my favorite songs
 
 [![build](https://img.shields.io/github/actions/workflow/status/alebabai/chords/ci.yml)](https://github.com/alebabai/chords/actions?query=workflow%3ACI)
 
@@ -29,9 +29,9 @@
     ```
 
 1. Add song lyrics with chords:
-    - Write chords using the following syntax \`[Chord]\`.
-    - Place chords wherever the music demands, within lines, words, etc.
-    - Wrap lyrics into `{{< chords >}}` shortcut.
+    - write chords using the following syntax ``` `[Chord]` ```
+    - place chords wherever the music demands, within lines, words, etc
+    - wrap lyrics into `{{< chords >}}` shortcut
 
     An example of lyrics with chords:
 
@@ -43,8 +43,8 @@
     ```
 
 1. Optional: use front matter to add addition metadata to the song:
-    - Add more artists, prioritizing the first as the main one, using the `artists` taxonomy.
-    - Add tags using the `tags` taxonomy.
+    - add more artists, prioritizing the first as the main one, using the `artists` taxonomy
+    - add tags using the `tags` taxonomy
 
 1. Make sure the song is no longer a draft by removing `draft: true`.
 1. Done - publish and enjoy!
