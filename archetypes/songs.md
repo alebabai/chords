@@ -8,3 +8,7 @@ artists:
 date: {{ .Date }}
 draft: true
 ---
+
+{{< chords >}}  
+<!-- put lyrics here -->
+{{< /chords >}}
