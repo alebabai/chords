@@ -36,15 +36,15 @@
 
     An example of lyrics with chords:
 
-    {{< chords >}}
+    {{% chords %}}
     Вступление: `[Am]` `[F]` `[C]` `[E]`
-    {{< /chords >}}
+    {{% /chords %}}
 
     ```md
-    {{< chords class="lyrics">}}  
+    {{% chords class="lyrics" %}}  
     Гра`[Am]`ницы `[F]`ключ пере`[C]`ломлен`[E]` пополам  
     А наш`[Am]` батюшка `[F]`Ленин `[C]`совсем`[E]` усоп   
-    {{< /chords >}}
+    {{% /chords %}}
     ```
 
 1. Optional: use front matter to add addition metadata to the song:
