@@ -28,13 +28,16 @@ a {
   margin-top: 1rem;
 }
 
-.chords p {
+.lyrics p {
   line-height: 3rem;
 }
 
-.chord {
+.lyrics .chord {
   position: absolute;
   margin-top: -1.5rem;
+}
+
+.chord {
   font-weight: lighter;
   color:  #980000;
 }

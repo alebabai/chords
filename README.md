@@ -31,15 +31,20 @@
 1. Add song lyrics with chords:
     - write chords using the following syntax ``` `[Chord]` ```
     - place chords wherever the music demands, within lines, words, etc
-    - wrap lyrics into `{{< chords >}}` shortcut
+    - use `chords` shortcode and wrap lyrics into `{{< chords class="lyrics ">}}` for superscript stylized chords
+    - use `chords` shortcode and wrap text with chords into `{{< chords >}}` for inline stylized chords
 
     An example of lyrics with chords:
 
+    {{< chords >}}
+    Вступление: `[Am]` `[F]` `[C]` `[E]`
+    {{< /chords >}}
+
     ```md
-    {{< chords >}}  
+    {{< chords class="lyrics">}}  
     Гра`[Am]`ницы `[F]`ключ пере`[C]`ломлен`[E]` пополам  
     А наш`[Am]` батюшка `[F]`Ленин `[C]`совсем`[E]` усоп   
-    {{< chords >}}
+    {{< /chords >}}
     ```
 
 1. Optional: use front matter to add addition metadata to the song:
