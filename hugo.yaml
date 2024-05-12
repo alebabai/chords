@@ -10,3 +10,8 @@ taxonomies:
 
 enableGitInfo: true
 enableRobotsTXT: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
