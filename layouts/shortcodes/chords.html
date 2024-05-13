@@ -1,6 +1,6 @@
 {{- $innerHTML :=  .Inner | strings.ReplaceRE "\\`\\[(.+?)\\]\\`" "<span class=\"chord\">$1</span>" | .Page.RenderString }}
 {{- if .Get "wrap" | default true }}
-  <div class="{{ .Get "class" | default "chords" }}">{{ $innerHTML }}</div>
+  <div class="{{ or (.Get 0) (.Get "class") | default "chords" }}">{{ $innerHTML }}</div>
 {{- else }}
   {{ $innerHTML }}
 {{- end }}
