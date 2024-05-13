@@ -36,11 +36,12 @@
 
     An example of lyrics with chords:
 
-    {{% chords %}}
-    Вступление: `[Am]` `[F]` `[C]` `[E]`
-    {{% /chords %}}
-
     ```md
+    {{% chords %}}  
+    Вступление: `[Am]` `[F]` `[C]` `[E]`
+    {{% /chords %}}  
+
+    
     {{% chords class="lyrics" %}}  
     Гра`[Am]`ницы `[F]`ключ пере`[C]`ломлен`[E]` пополам  
     А наш`[Am]` батюшка `[F]`Ленин `[C]`совсем`[E]` усоп   
