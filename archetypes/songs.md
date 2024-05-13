@@ -10,5 +10,9 @@ draft: true
 ---
 
 {{< chords >}}  
+<!-- put intro here -->
+{{< /chords >}}
+
+{{< chords lyrics >}}  
 <!-- put lyrics here -->
 {{< /chords >}}
