@@ -11,8 +11,8 @@ draft: true
 
 {{% chords %}}  
 <!-- put intro here -->
-{{% /chords %}}
+{{% /chords %}}  
 
 {{% chords lyrics %}}  
 <!-- put lyrics here -->
-{{% /chords %}}
+{{% /chords %}}  
