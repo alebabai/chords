@@ -3,8 +3,17 @@
   {{ .Content }}
   {{- range .Pages.ByTitle }}
     <article>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      <header>
+        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      </header>
       {{ .Summary }}
+      <ul>
+        {{- range .Pages.ByTitle }}
+        <li>
+          <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+        </li>
+        {{- end }}
+      </ul>
     </article>
   {{- end }}
 {{- end }}
