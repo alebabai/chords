@@ -5,8 +5,8 @@
     <article>
       <header>
         <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        {{ .Summary }}
       </header>
-      {{ .Summary }}
       <ul>
         {{- range .Pages.ByTitle }}
         <li>
