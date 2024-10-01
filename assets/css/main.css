@@ -39,5 +39,22 @@ a {
 
 .chord {
   font-weight: lighter;
-  color:  #980000;
+  color: #980000;
+}
+
+@media print {
+
+  body>header,
+  body>footer {
+    display: none !important;
+  }
+
+  article:not(:last-child) {
+    page-break-after: always;
+  }
+
+  .lyrics,
+  p {
+    page-break-inside: avoid;
+  }
 }
