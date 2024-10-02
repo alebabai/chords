@@ -28,18 +28,18 @@ a {
   margin-top: 1rem;
 }
 
-.lyrics {
-  line-height: 3rem;
-}
-
-.lyrics .chord {
-  position: absolute;
-  margin-top: -1.5rem;
-}
-
 .chord {
   font-weight: lighter;
   color: #980000;
+}
+
+.chords--lyrics {
+  line-height: 3rem;
+}
+
+.chords--lyrics .chord {
+  position: absolute;
+  margin-top: -1.5rem;
 }
 
 @media print {
@@ -53,7 +53,7 @@ a {
     page-break-after: always;
   }
 
-  .lyrics,
+  .chords,
   p {
     page-break-inside: avoid;
   }

@@ -32,12 +32,12 @@
     - write chords using the following syntax ``` `[Chord]` ```
     - place chords wherever the music demands, within lines, words, etc
     - wrap text into `{{% chords lyrics %}}` shortcode for superscript stylized chords
-    - wrap text into `{{% chords %}}` shortcode for inline stylized chords
+    - wrap text into `{{% chords inline %}}` shortcode for inline stylized chords
 
     An example of lyrics with chords:
 
     ```md
-    {{% chords %}}  
+    {{% chords inline %}}  
     **[Вступление]** (x2): `[Am]` `[F]` `[C]` `[E]`  
     {{% /chords %}}
 

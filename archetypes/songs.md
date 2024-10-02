@@ -9,7 +9,7 @@ date: {{ .Date }}
 draft: true
 ---
 
-{{% chords %}}  
+{{% chords inline %}}  
 <!-- put intro here -->
 {{% /chords %}}
 
