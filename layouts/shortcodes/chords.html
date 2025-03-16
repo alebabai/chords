@@ -1,3 +1,8 @@
 <div class="chords {{ with or (.Get 0) (.Get "modifier") }}chords--{{ . }}{{ end }}">
-  {{- .Inner | strings.ReplaceRE "\\x60\\[(.+?)\\]\\x60([^\\s\\x60]*)" "<span class=\"chord\" data-chord=\"$1\">$2</span>" | .Page.RenderString }}
+  {{- $out := .Inner | strings.ReplaceRE "([^\\s\\x60]*)\\x60\\[(.+?)\\]\\x60([^\\s\\x60]*)" "CHORD_BEGIN;$1;$2;$3;CHORD_END" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);([^;]+);CHORD_END" "$1<span class=\"chord\" data-chord=\"$2\">$3</span>" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;;([^;]+);;CHORD_END" "<span class=\"chord\" data-chord=\"$1\"></span>" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);;CHORD_END" "<span class=\"chord\" data-chord=\"$2\">$1</span>" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;;([^;]+);([^;]+);CHORD_END" "<span class=\"chord\" data-chord=\"$1\">$2</span>" }}
+  {{- $out | .Page.RenderString }}
 </div>

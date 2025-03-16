@@ -44,24 +44,14 @@ a {
 }
 
 .chords--lyrics .chord::before {
-  position: absolute;
-  top: -2.5rem;
+  position: relative;
+  display: inline-block;
+  top: -1.5rem;
+  width: 0;
 }
 
-.chords--lyrics .chord:empty + .chord:empty::before {
-  left: 2rem;
-}
-
-.chords--lyrics .chord:empty + .chord:empty + .chord:empty::before {
-  left: 4rem;
-}
-
-.chords--lyrics .chord:empty + .chord:empty + .chord:empty + .chord:empty::before {
-  left: 6rem;
-}
-
-.chords--lyrics .chord:empty + .chord:empty + .chord:empty + .chord:empty + .chord:empty::before {
-  left: 8rem;
+.chords--lyrics .chord:empty::before {
+  width: 1rem;
 }
 
 @media print {
