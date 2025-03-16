@@ -1,7 +1,7 @@
 body {
   color: black;
   font-family: sans-serif;
-  line-height: 1.5;
+  line-height: 1.5rem;
   margin: 1.5rem;
 }
 
@@ -28,18 +28,40 @@ a {
   margin-top: 1rem;
 }
 
-.chord {
+.chord::before {
+  content: attr(data-chord);
   font-weight: lighter;
   color: #980000;
 }
 
 .chords--lyrics {
-  line-height: 3rem;
+  line-height: 3.5rem;
 }
 
 .chords--lyrics .chord {
+  min-width: 2rem; 
+  position: relative;
+}
+
+.chords--lyrics .chord::before {
   position: absolute;
-  margin-top: -1.5rem;
+  top: -2.5rem;
+}
+
+.chords--lyrics .chord:empty + .chord:empty::before {
+  left: 2rem;
+}
+
+.chords--lyrics .chord:empty + .chord:empty + .chord:empty::before {
+  left: 4rem;
+}
+
+.chords--lyrics .chord:empty + .chord:empty + .chord:empty + .chord:empty::before {
+  left: 6rem;
+}
+
+.chords--lyrics .chord:empty + .chord:empty + .chord:empty + .chord:empty + .chord:empty::before {
+  left: 8rem;
 }
 
 @media print {
