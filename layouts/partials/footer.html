@@ -1,4 +1,4 @@
 <div class="flex-content">
     <small>{{ T "copyright" now.Year }}</small>
-    <small>{{ T "last_modified" (.Site.Lastmod | time.Format ":date_long") }}</small>
+    <small>{{ T "last_modified" (cond .IsPage .Lastmod .Site.Lastmod | time.Format ":date_long") }}</small>
 </div>
