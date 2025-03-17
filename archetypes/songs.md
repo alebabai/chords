@@ -10,7 +10,7 @@ draft: true
 ---
 
 {{% chords inline %}}  
-<!-- put intro here -->
+<!-- put the intro here -->
 {{% /chords %}}
 
 {{% chords lyrics %}}  
