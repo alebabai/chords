@@ -1,1 +1,4 @@
-<p>{{ T "copyright" now.Year }}</p>
+<div class="flex-content">
+    <small>{{ T "copyright" now.Year }}</small>
+    <small>{{ T "last_modified" (.Site.Lastmod | time.Format ":date_long") }}</small>
+</div>

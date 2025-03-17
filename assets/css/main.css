@@ -39,7 +39,7 @@ a {
 }
 
 .chords--lyrics .chord {
-  min-width: 2rem; 
+  min-width: 2rem;
   position: relative;
 }
 
@@ -52,6 +52,11 @@ a {
 
 .chords--lyrics .chord:empty::before {
   width: 1rem;
+}
+
+.flex-content {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media print {
