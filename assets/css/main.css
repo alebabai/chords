@@ -67,11 +67,11 @@ a {
   }
 
   article:not(:last-child) {
-    page-break-after: always;
+    break-after: page;
   }
 
   .chords,
   p {
-    page-break-inside: avoid;
+    break-inside: avoid-page;
   }
 }
