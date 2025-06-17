@@ -59,6 +59,16 @@ a {
   justify-content: space-between;
 }
 
+footer .flex-content > *:first-child {
+  text-align: left;
+  flex: 1;
+}
+
+footer .flex-content > *:last-child {
+  text-align: right;
+  flex: 1;
+}
+
 @media print {
 
   body>header,
