@@ -42,19 +42,19 @@ p {
 }
 
 .chords--lyrics .chord {
-  min-width: 2rem;
+  min-width: 2em;
   position: relative;
 }
 
 .chords--lyrics .chord::before {
   position: relative;
   display: inline-block;
-  top: -1.5rem;
+  top: -1.5em;
   width: 0;
 }
 
 .chords--lyrics .chord:empty::before {
-  width: 1rem;
+  width: 1em;
 }
 
 .flex-content {
