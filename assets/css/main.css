@@ -1,7 +1,6 @@
 body {
   color: black;
   font-family: sans-serif;
-  line-height: 1.5rem;
   margin: 1.5rem;
 }
 
@@ -24,6 +23,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  line-height: 1.5;
+}
+
 .terms {
   margin-top: 1rem;
 }
@@ -35,7 +38,7 @@ a {
 }
 
 .chords--lyrics {
-  line-height: 3.5rem;
+  line-height: 3.5;
 }
 
 .chords--lyrics .chord {
