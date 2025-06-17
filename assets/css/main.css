@@ -69,7 +69,6 @@ footer .flex-content > *:first-child {
 
 footer .flex-content > *:last-child {
   text-align: right;
-  flex: 1;
 }
 
 @media print {
