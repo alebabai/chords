@@ -1,0 +1,2 @@
+copyright: © {{ . }} Attack Helicopter AH-64 «Apache». All rights are oppressed.
+last_modified: "Last modified: {{ . }}"
