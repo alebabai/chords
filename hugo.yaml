@@ -13,7 +13,7 @@ enableRobotsTXT: false
 
 params:
   images:
-    - cover.jpg
+    - images/cover.jpg
 
 markup:
   goldmark:
