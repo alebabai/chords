@@ -1,6 +1,6 @@
 {{- define "main" }}
   {{ .Content }}
-  {{- with resources.Get "images/luffy.jpg"}}
-    <img src="{{ .RelPermalink }}" alt="Monkey D. Luffy" style="max-width: 100%; height: auto; max-height: 350px;">
+  {{- with resources.Get "images/cover.jpg"}}
+    <img src="{{ .RelPermalink }}" style="max-width: 100%; height: auto; max-height: 350px;">
   {{- end }}
 {{- end }}

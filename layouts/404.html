@@ -2,8 +2,8 @@
   {{- with .GetPage "/_404" | default . }}
     <h1>{{ .Title }}</h1>
     {{ .Content }}
-    {{- with resources.Get "images/apache.jpg"}}
-      <img src="{{ .RelPermalink }}" alt="Attack helicopter" style="width:100%; max-width: 500px; height: auto;">
+    {{- with resources.Get "images/404.jpg"}}
+      <img src="{{ .RelPermalink }}" style="width:100%; max-width: 500px; height: auto;">
     {{- end }}
   {{- end }}
 {{- end }}
