@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width">
 {{- $title := cond (eq .Path "/404") (.GetPage "/_404" | default .).Title .Title }}
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" $title site.Title }}{{ end }}</title>
+{{ partial "opengraph.html" . }}
 {{ partialCached "head/favicon.html" . }}
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
