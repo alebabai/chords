@@ -1,8 +1,9 @@
 ---
 title: Главная
 menus:
-  - main
-weight: 1
+  main:
+    identifier: index
+    weight: 1
 summary: Старомодный сайт с намеренно неправильными аккордами моих любимых песен.
 ---
 
