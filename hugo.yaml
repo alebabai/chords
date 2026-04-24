@@ -1,7 +1,7 @@
 baseURL: https://alebabai.github.io/chords/
 title: Неправильные аккорды
 
-languageCode: ru
+locale: ru
 defaultContentLanguage: ru
 
 taxonomies:
@@ -19,3 +19,8 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.160.1"
