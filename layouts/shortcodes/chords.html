@@ -1,3 +1,26 @@
+{{/*
+  Shortcode: chords
+  Usage: {{% chords [modifier] %}} lyrics with chord markers {{% /chords %}}
+
+  Chord syntax (backtick + bracket notation):
+    `[Am]`слово       → chord above the following word/syllable
+    слово`[Am]`       → chord above the preceding word (word anchors inside span)
+    сло`[Am]`во       → prefix "сло" before span, "во" anchors the chord
+    `[Am]`            → standalone chord, no text anchor (takes 1em width)
+
+  How it works:
+  RE2 (Go regex) has no conditional replacement, so rendering is two-phase:
+
+  Phase 1 — tokenize all chord markers into an intermediate format:
+    prefix`[chord]`suffix  →  CHORD_BEGIN;prefix;chord;suffix;CHORD_END
+
+  Phase 2 — four passes, each handling one combination of prefix/suffix presence:
+    prefix + chord + suffix  →  prefix<span data-chord="chord">suffix</span>
+    prefix + chord           →  <span data-chord="chord">prefix</span>
+    chord + suffix           →  <span data-chord="chord">suffix</span>
+    chord only               →  <span data-chord="chord"></span>
+
+*/}}
 <div class="chords {{ with or (.Get 0) (.Get "modifier") }}chords--{{ . }}{{ end }}">
   {{- $out := .Inner | strings.ReplaceRE "([^\\s\\x60]*)\\x60\\[(.+?)\\]\\x60([^\\s\\x60]*)" "CHORD_BEGIN;$1;$2;$3;CHORD_END" }}
   {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);([^;]+);CHORD_END" "$1<span class=\"chord\" data-chord=\"$2\">$3</span>" }}
