@@ -1,31 +1,61 @@
 {{/*
-  Shortcode: chords
-  Usage: {{% chords [modifier] %}} lyrics with chord markers {{% /chords %}}
+  Renders chord markers inside song text.
 
-  Chord syntax (backtick + bracket notation):
-    `[Am]`слово       → chord above the following word/syllable
-    слово`[Am]`       → chord above the preceding word (word anchors inside span)
-    сло`[Am]`во       → prefix "сло" before span, "во" anchors the chord
-    `[Am]`            → standalone chord, no text anchor (takes 1em width)
+  @param {string} mode The rendering mode. Supported values: "inline" and "lyrics".
+  @param {string} [modifier] A CSS class modifier appended as "chords--<modifier>".
 
-  How it works:
-  RE2 (Go regex) has no conditional replacement, so rendering is two-phase:
+  @reference https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ruby
 
-  Phase 1 — tokenize all chord markers into an intermediate format:
-    prefix`[chord]`suffix  →  CHORD_BEGIN;prefix;chord;suffix;CHORD_END
+  @example {{% chords inline %}}
+             **[Intro]**: `[Am]` `[F]` `[C]` `[E]`
+           {{% /chords %}}
 
-  Phase 2 — four passes, each handling one combination of prefix/suffix presence:
-    prefix + chord + suffix  →  prefix<span data-chord="chord">suffix</span>
-    prefix + chord           →  <span data-chord="chord">prefix</span>
-    chord + suffix           →  <span data-chord="chord">suffix</span>
-    chord only               →  <span data-chord="chord"></span>
+  @example {{% chords lyrics %}}
+             `[Am]`Hello, wor`[F]`ld
+           {{% /chords %}}
+
+  Marker syntax:
+    wo`[Am]`rd       → chord inside a word; "wo" stays outside ruby, "rd" anchors the chord
+    `[Am]`word       → chord before the following word/syllable
+    word`[Am]`       → chord after the preceding word
+    `[Am]`           → standalone chord
+
+  Rendering:
+    RE2 has no conditional replacement, so rendering is two-phase.
+
+    Phase 1 — tokenize all chord markers into an intermediate format:
+      prefix`[chord]`suffix  →  CHORD_BEGIN;prefix;chord;suffix;CHORD_END
+
+    Phase 2 — render tokens according to the selected mode.
+
+      Inline mode — one replacement pass:
+        prefix + chord + suffix  →  prefix<span class="chord">chord</span>suffix
+
+      Lyrics mode — four replacement passes, in code order:
+        prefix + chord + suffix  →  prefix<ruby class="chord-chunk chord-chunk--leading">suffix<rt class="chord">chord</rt></ruby>
+        chord only               →  <ruby class="chord-chunk chord-chunk--textless"><rt class="chord">chord</rt></ruby>
+        prefix + chord           →  <ruby class="chord-chunk chord-chunk--trailing">prefix<rt class="chord">chord</rt></ruby>
+        chord + suffix           →  <ruby class="chord-chunk chord-chunk--leading">suffix<rt class="chord">chord</rt></ruby>
 
 */}}
-<div class="chords {{ with or (.Get 0) (.Get "modifier") }}chords--{{ . }}{{ end }}">
-  {{- $out := .Inner | strings.ReplaceRE "([^\\s\\x60]*)\\x60\\[(.+?)\\]\\x60([^\\s\\x60]*)" "CHORD_BEGIN;$1;$2;$3;CHORD_END" }}
-  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);([^;]+);CHORD_END" "$1<span class=\"chord\" data-chord=\"$2\">$3</span>" }}
-  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;;([^;]+);;CHORD_END" "<span class=\"chord\" data-chord=\"$1\"></span>" }}
-  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);;CHORD_END" "<span class=\"chord\" data-chord=\"$2\">$1</span>" }}
-  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;;([^;]+);([^;]+);CHORD_END" "<span class=\"chord\" data-chord=\"$1\">$2</span>" }}
+
+{{- /* Get arguments. */}}
+{{- $mode := cond .IsNamedParams (.Get "mode") (.Get 0) }}
+{{- $modifier := cond .IsNamedParams (.Get "modifier") (.Get 1) }}
+{{- if not $mode }}{{ errorf "The %q shortcode requires a mode argument, 'inline' or 'lyrics': see %s" $.Name $.Position }}{{ end }}
+
+{{- /* Build output. */}}
+{{- $out := .Inner | strings.ReplaceRE "([^\\s\\x60]*)\\x60\\[(.+?)\\]\\x60([^\\s\\x60]*)" "CHORD_BEGIN;$1;$2;$3;CHORD_END" }}
+{{- if eq $mode "inline" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]*);([^;]+);([^;]*);CHORD_END" "$1<span class=\"chord\">$2</span>$3" }}
+{{- else if eq $mode "lyrics" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);([^;]+);CHORD_END" "$1<ruby class=\"chord-chunk chord-chunk--leading\">$3<rt class=\"chord\">$2</rt></ruby>" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;;([^;]+);;CHORD_END" "<ruby class=\"chord-chunk chord-chunk--textless\"><rt class=\"chord\">$1</rt></ruby>" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;([^;]+);([^;]+);;CHORD_END" "<ruby class=\"chord-chunk chord-chunk--trailing\">$1<rt class=\"chord\">$2</rt></ruby>" }}
+  {{- $out = $out | strings.ReplaceRE "CHORD_BEGIN;;([^;]+);([^;]+);CHORD_END" "<ruby class=\"chord-chunk chord-chunk--leading\">$2<rt class=\"chord\">$1</rt></ruby>" }}
+{{- end }}
+
+{{- /* Render. */}}
+<p class="chords chords--{{ $mode }}{{ with $modifier }} chords--{{ . }}{{ end }}">
   {{- $out | .Page.RenderString }}
-</div>
+</p>
