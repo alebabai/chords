@@ -1,8 +1,10 @@
 {{- define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  <footer>
-    {{ partial "terms.html" (dict "taxonomy" "artists" "page" .) }}
-    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
-  </footer>
+  <article>
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    <footer>
+      {{ partial "terms.html" (dict "taxonomy" "artists" "page" .) }}
+      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    </footer>
+  </article>
 {{- end }}

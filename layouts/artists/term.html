@@ -1,12 +1,14 @@
 {{- define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{- range .Pages.ByTitle }}
-    <article>
-      <header>
-        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      </header>
-      {{ .Content }}
-    </article>
-  {{- end }}
+  <article>
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    {{- range .Pages.ByTitle }}
+      <section>
+        <header>
+          <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        </header>
+        {{ .Content }}
+      </section>
+    {{- end }}
+  </article>
 {{- end }}
