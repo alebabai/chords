@@ -1,0 +1,62 @@
+{{- if .IsHome }}
+<script type="application/ld+json">{{ dict
+  "@context" "https://schema.org"
+  "@type"    "WebSite"
+  "name"     site.Title
+  "url"      .Permalink
+| jsonify | safeJS }}</script>
+
+{{- else if and (eq .Kind "page") (eq .Section "songs") }}
+{{- $artists := slice }}
+{{- range .GetTerms "artists" }}
+  {{- $artists = append (dict "@type" "MusicGroup" "name" .LinkTitle "url" .Permalink) $artists }}
+{{- end }}
+<script type="application/ld+json">{{ dict
+  "@context"      "https://schema.org"
+  "@type"         "MusicComposition"
+  "name"          .Title
+  "url"           .Permalink
+  "datePublished" (.Date | time.Format "2006-01-02")
+  "byArtist"      $artists
+| jsonify | safeJS }}</script>
+
+{{- else if and (eq .Kind "section") (eq .Section "songs") }}
+{{- $items := slice }}
+{{- range $i, $p := .Pages.ByTitle }}
+  {{- $items = append (dict "@type" "ListItem" "position" (add $i 1) "name" $p.Title "url" $p.Permalink) $items }}
+{{- end }}
+<script type="application/ld+json">{{ dict
+  "@context"        "https://schema.org"
+  "@type"           "ItemList"
+  "name"            .Title
+  "url"             .Permalink
+  "itemListElement" $items
+| jsonify | safeJS }}</script>
+
+{{- else if and (eq .Kind "taxonomy") (eq .Data.Singular "artist") }}
+{{- $items := slice }}
+{{- range $i, $p := .Pages.ByTitle }}
+  {{- $items = append (dict "@type" "ListItem" "position" (add $i 1) "name" $p.LinkTitle "url" $p.Permalink) $items }}
+{{- end }}
+<script type="application/ld+json">{{ dict
+  "@context"        "https://schema.org"
+  "@type"           "ItemList"
+  "name"            .Title
+  "url"             .Permalink
+  "itemListElement" $items
+| jsonify | safeJS }}</script>
+
+{{- else if and (eq .Kind "term") (eq .Data.Singular "artist") }}
+{{- $tracks := slice }}
+{{- range .Pages.ByTitle }}
+  {{- $tracks = append (dict "@type" "MusicComposition" "name" .Title "url" .Permalink) $tracks }}
+{{- end }}
+<script type="application/ld+json">{{ dict
+  "@context" "https://schema.org"
+  "@type"    "MusicGroup"
+  "name"     .Title
+  "url"      .Permalink
+  "track"    $tracks
+| jsonify | safeJS }}</script>
+
+{{- end }}
