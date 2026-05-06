@@ -3,7 +3,7 @@
     <h1>{{ .Title }}</h1>
     {{ .Content }}
     {{- with resources.Get "images/404.jpg"}}
-      <img src="{{ .RelPermalink }}" style="width:100%; max-width: 500px; height: auto;">
+      <img src="{{ .RelPermalink }}" class="image--404" alt="404">
     {{- end }}
   {{- end }}
 {{- end }}

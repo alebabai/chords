@@ -1,7 +1,10 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {{- $title := cond (eq .Path "/404") (.GetPage "/_404" | default .).Title .Title }}
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" $title site.Title }}{{ end }}</title>
+{{- with .Description | default (.Summary | plainify) }}
+  <meta name="description" content="{{ . | truncate 155 }}">
+{{- end }}
 {{ partial "opengraph.html" . }}
 {{ partial "head/jsonld.html" . }}
 {{ partialCached "head/favicon.html" . }}
